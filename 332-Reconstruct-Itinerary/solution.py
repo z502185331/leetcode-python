@@ -9,10 +9,7 @@ class Solution(object):
         
         d = {} # a dict store the <from> to <a list of to>
         for t in tickets:
-            if t[0] not in d:
-                d[t[0]] = [t[1]]
-            else:
-                d[t[0]].append(t[1])
+            d[t[0]] = d.get(t[0], []) + [t[1]]
         
         for l in d.values():
             l.sort()
