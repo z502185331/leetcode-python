@@ -23,7 +23,7 @@ class Solution(object):
                 start = end = i + 1
         
         # deal with the situation when nums[-2] == sys.maxint - 1
-        if start != end:
-            ans.append(str(nums[start]) + '->' + str(nums[end - 1]))
+        # if start != end:
+        #     ans.append(str(nums[start]) + '->' + str(nums[end - 1]))
         
         return ans
