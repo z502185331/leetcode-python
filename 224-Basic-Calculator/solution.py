@@ -14,6 +14,9 @@ class Solution(object):
         stack_oper = []
         stack_num = []
         
+        '''
+        A method to calculate the current expression
+        '''
         def cal_helper():
             oper = stack_oper.pop()
             num2 = stack_num.pop()
