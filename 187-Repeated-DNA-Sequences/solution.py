@@ -8,9 +8,14 @@ class Solution(object):
             return []
         
         res = []
+        history = set() # store the sequence that has been processed
+        
         for i in xrange(len(s) - 9):
             cur = s[i : i + 10]
-            if s.count(cur) > 1 and cur not in res:
-                res.append(cur)
+            if cur not in history:
+                history.add(cur)
+            else:
+                if cur not in res:
+                    res.append(cur)
         
         return res
