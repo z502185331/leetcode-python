@@ -15,10 +15,37 @@ class Solution(object):
         if root is None:
             return True
         
+        return self.sol_iter(root)
+        
+    def sol_iter(self, root):
+        stack_left = [root]
+        stack_right = [root]
+        
+        left, right = root.left, root.right
+        while stack_left and stack_right:
+            if left is not None and right is not None:
+                if left.val != right.val:
+                    return False
+                stack_left.append(left)
+                stack_right.append(right)
+                left = left.left
+                right = right.right
+            elif left is None and right is None:
+                left = stack_left.pop()
+                right = stack_right.pop()
+                left = left.right
+                right = right.left
+            else:
+                return False
+        return True
+        
+        
+    
+    
+    def sol_rec(self, root):
         self.queue = []
         self.pushToQueue(root.left)
         return self.checkSymm(root.right)
-        
         
     
     '''
