@@ -9,20 +9,14 @@ class Solution(object):
             return []
             
         res = []
-        def dfs(path, index_path):
-            if len(path) == len(nums):
-                if path not in res:
-                    res.append(list(path))
-                return
-            
-            for i in xrange(len(nums)):
-                if i in index_path:
-                    continue
-                path.append(nums[i])
-                index_path.append(i)
-                dfs(path, index_path)
-                path.pop()
-                index_path.pop()
-            
-        dfs([], [])
+        self.helper(res, [], nums)
         return res
+        
+    def helper(self, result, path,  nums):
+        if not nums :
+            result += [path]
+        else :
+            for i in range(len(nums)):
+                if i > 0 and nums[i] == nums[i - 1]:
+                    continue;
+                self.helper(result, path + [nums[i]], nums[:i] + nums[i + 1:])
