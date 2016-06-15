@@ -6,7 +6,7 @@ class Solution(object):
         :rtype: List[int]
         """
         
-        if not nums or target not in nums:
+        if not nums:
             return [-1, -1]
         
         m = len(nums)
@@ -21,7 +21,8 @@ class Solution(object):
             elif nums[mid] < target:
                 l = mid
         
-        start = l if nums[l] == target else r
+        if nums[l] == target or nums[r] == target:
+            start = l if nums[l] == target else r
         
         # find the right border of target
         l, r = 0, m - 1
@@ -31,7 +32,8 @@ class Solution(object):
                 r = mid
             else:
                 l = mid
-        
-        end = r if nums[r] == target else l
+                
+        if nums[l] == target or nums[r] == target:
+            end = r if nums[r] == target else l
         
         return [start, end]
