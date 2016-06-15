@@ -1,16 +1,11 @@
+from collections import defaultdict
 class Solution(object):
+    
     def groupAnagrams(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: List[List[str]]
-        """
-        if not strs:
-            return []
-        
-        d = {}
-        for str in strs:
-            sort_str = ''.join(sorted(str))
-            d[sort_str] = d.get(sort_str, []) + [str]
-            
-        return [value for value in d.values()]
+    
+        dic = defaultdict(list)
+        for string in strs:
+                dic[''.join(sorted(string))] += [string]
+    
+        return [value for key, value in dic.items()]
         
