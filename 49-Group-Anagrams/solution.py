@@ -12,9 +12,5 @@ class Solution(object):
             sort_str = ''.join(sorted(str))
             d[sort_str] = d.get(sort_str, []) + [str]
             
-        res = []
-        for l in d.values():
-            res.append(l)
-            
-        return res
+        return [value for value in d.values()]
         
