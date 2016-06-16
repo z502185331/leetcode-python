@@ -19,6 +19,8 @@ class Solution(object):
                     if board[j][i] in s_col:
                         return False
                     s_col.add(board[j][i])
+
+                
         
         # test square
         for i in xrange(3):
