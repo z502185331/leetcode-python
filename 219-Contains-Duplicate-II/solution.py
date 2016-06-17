@@ -9,13 +9,12 @@ class Solution(object):
         if not nums:
             return False
         
-        l = []
-        for i in xrange(len(nums)):
-            if nums[i] in l:
-                return True
+        d = {}
+        for i, num in enumerate(nums):
+            if num in d:
+                if i - d[num] <= k:
+                    return True
             
-            l.append(nums[i])
-            if len(l) > k:
-                l.pop(0)
+            d[num] = i
+            
         return False
-        
