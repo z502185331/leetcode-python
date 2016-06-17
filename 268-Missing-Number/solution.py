@@ -11,9 +11,10 @@ class Solution(object):
         # for i in xrange(len(nums)):
         #     while i != nums[i]:
         #         if nums[i] == len(nums):
-        for i in xrange(len(nums)):
-            if i not in nums:
-                return i
-                
-        return len(nums)
+        n = len(nums)
+        sum = 0
+        for num in nums:
+            sum += num
+        
+        return n * (n + 1) / 2 - sum
                     
