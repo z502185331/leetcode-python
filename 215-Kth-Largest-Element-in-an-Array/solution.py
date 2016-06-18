@@ -41,5 +41,5 @@ class Solution(object):
                 l += 1
             nums[r] = nums[l]
         
-        nums[r] = pivot
-        return r
+        nums[l] = pivot
+        return l
