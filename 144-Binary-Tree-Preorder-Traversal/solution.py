@@ -15,9 +15,8 @@ class Solution(object):
         if root is None:
             return []
         
-        stack = [root]
-        res = [root.val]
-        root = root.left
+        stack = []
+        res = []
         
         while True:
             if root is not None:
