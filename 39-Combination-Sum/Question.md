@@ -28,6 +28,12 @@ A solution set is:
 
 <div>
 
+<div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
+
+<span class="hidebutton">[Snapchat](/company/snapchat/) [Uber](/company/uber/)</span></div>
+
+<div>
+
 <div id="tags" class="btn btn-xs btn-warning">Show Tags</div>
 
 <span class="hidebutton">[Array](/tag/array/) [Backtracking](/tag/backtracking/)</span></div>
