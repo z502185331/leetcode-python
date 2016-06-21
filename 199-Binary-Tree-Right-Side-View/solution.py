@@ -13,7 +13,7 @@ class Solution(object):
         """
         
         res = []
-        self.dfs(root, 0, 0, res)
+        self.dfs(root, 0, -1, res)
         return res
     
     '''
@@ -24,7 +24,7 @@ class Solution(object):
         if root is None:
             return depth - 1
         
-        if depth > r_depth or r_depth == 0:
+        if depth > r_depth:
             res.append(root.val)
         
         cur_r_depth = self.dfs(root.right, depth + 1, r_depth, res)
