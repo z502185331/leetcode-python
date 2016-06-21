@@ -24,8 +24,6 @@ class Solution(object):
                 
             else:
                 i += 1
-                
-        # for i in xrange(l, r + 1):
-        #     nums[i] = 1
+
         
         
