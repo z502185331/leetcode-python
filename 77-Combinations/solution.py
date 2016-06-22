@@ -17,6 +17,9 @@ class Solution(object):
                 return
             
             for i in range(index, n + 1):
+                if k - len(path) > n - i + 1:
+                    break
+                
                 path.append(i)
                 dfs(i + 1, path)
                 path.pop()
