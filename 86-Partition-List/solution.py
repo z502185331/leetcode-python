@@ -22,6 +22,7 @@ class Solution(object):
             else:
                 tail_lg.next = head
                 tail_lg = tail_lg.next
+            head = head.next
         
         tail_sm.next = prehead_lg.next
         tail_lg.next = None
