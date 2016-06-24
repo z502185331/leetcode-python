@@ -28,12 +28,15 @@ class Solution(object):
         dp = [False] * m
         dp[0] = True
         
-        for i in xrange(1, m):
-            for j in xrange(i):
-                if dp[j] and i <= j + nums[j]:
-                    dp[i] = True
-                    break
-            
+        for i in xrange(m):
+            if dp[i]:
+                for j in xrange(i + 1, i + nums[i] + 1):
+                    if j < m:
+                        dp[j] = True
+                    else:
+                        break
+            else:
+                break
         
         return dp[m - 1]
         
