@@ -7,7 +7,7 @@ class Solution(object):
         if not nums:
             return True
         
-        return self.sol_dp(nums)
+        return self.sol_greedy(nums)
     
     def sol_greedy(self, nums):
         cur = 0
@@ -22,6 +22,7 @@ class Solution(object):
         return True;
     
     
+    # TLE
     def sol_dp(self, nums):
         
         m = len(nums)
