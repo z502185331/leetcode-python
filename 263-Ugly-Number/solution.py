@@ -5,6 +5,9 @@ class Solution(object):
         :rtype: bool
         """
         
+        if num == 0:
+            return False
+        
         # divide 2
         while num % 2 == 0:
             num /= 2
