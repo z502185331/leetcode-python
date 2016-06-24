@@ -12,21 +12,14 @@ class Solution(object):
             return True
         
         cur = 0
-        reach = nums[0]
-        m = len(nums)
+        reach = 0
         
-        while cur <= reach:
-            if reach >= m - 1:
-                return True
-            
-            if cur + nums[cur] > reach:
-                reach = cur + nums[cur]
-            
-            if cur < reach:
-                cur += 1
-            else:
-                break
+        for num in nums[: -1]:
+            reach = max(reach, cur + nums[cur])
+            if (reach <= cur):
+                return False
+            cur += 1
         
-        return cur == m - 1;
+        return True;
             
             
