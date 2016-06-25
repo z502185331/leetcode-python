@@ -6,17 +6,18 @@ class Solution(object):
         """
         
         if not s:
-            return ''
+            return 0
         
         m = len(s)
-        matrix = [[False] * m for i in xrange(m)]
-        max_str = ''
+        maxL = 0
+        maxStr = ''
         
+        dp = [[False] * m for i in xrange(m)]
         for i in reversed(xrange(m)):
             for j in xrange(i, m):
-                if s[i] == s[j] and (j - i <= 1 or matrix[i + 1][j - 1]):
-                    matrix[i][j] = True
-                    if len(max_str) < j - i + 1:
-                        max_str = s[i : j + 1]
-        
-        return max_str
+                if s[i] == s[j] and (j - i < 2 or dp[i + 1][j - 1]):
+                    dp[i][j] = True
+                    if j - i + 1 > maxL:
+                        maxL = j - i + 1
+                        maxStr = s[i : j + 1]
+        return maxStr
