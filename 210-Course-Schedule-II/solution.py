@@ -15,55 +15,37 @@ class Solution(object):
             graph[pair[1]].append(pair[0])
         
         # contains sorted nodes
-        return self.topologicalSort(graph) if not self.hasCycle(graph) else []
-    
-    
-    def hasCycle(self, graph):
-        
-        marks = [0] * len(graph)
-        
-        def dfs(cur):
-            if marks[cur] == 1:
-                return False
-
-            marks[cur] = 1
-            
-            for i in graph[cur]:
-                
-                if not dfs(i):
-                    return False
-            
-            marks[cur] = 2
-            return True
-            
-        for i in xrange(len(graph)):
-            if marks[i] == 2:
-                continue
-            
-            if not dfs(i):
-                return True
-        
-        return False
+        return self.topologicalSort(graph)
         
         
         
     def topologicalSort(self, graph):
         queue = []
-        marks = [False] * len(graph)
+        marks = [0] * len(graph)
         
         def dfs(cur):
+            if marks[cur] == 1:
+                return False
             
-            marks[cur] = True
+            marks[cur] = 1
             for next_course in graph[cur]:
-                if not marks[next_course]:
-                    dfs(next_course)
+                if marks[next_course] == 2:
+                    continue
+                
+                if not dfs(next_course):
+                    return False
                     
             queue.insert(0, cur)
+            marks[cur] = 2
+            return True
             
         
         for course in graph:
-            if not marks[course]:
-                dfs(course)
+            if marks[course] == 2:
+                continue
+            
+            if not dfs(course):
+                return []
         
         return queue
         
