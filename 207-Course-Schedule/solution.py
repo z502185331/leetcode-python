@@ -17,28 +17,27 @@ class Solution(object):
         for pair in prerequisites:
             graph[pair[0]].append(pair[1])
         
-        marks = [False] * numCourses
-        s = set()
+        marks = [0] * numCourses
+        
         
         def dfs(cur):
-            if marks[cur]:
+            if marks[cur] == 1:
                 return False
             
             
-            marks[cur] = True
+            marks[cur] = 1
             
             for i in graph[cur]:
                 
                 if not dfs(i):
                     return False
             
-            s.add(cur)
-            marks[cur] = False
+            marks[cur] = 2
             return True
             
         
         for i in xrange(numCourses):
-            if i in s:
+            if marks[i] == 2:
                 continue
             
             if not dfs(i):
