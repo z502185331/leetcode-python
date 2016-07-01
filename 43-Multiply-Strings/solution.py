@@ -6,6 +6,34 @@ class Solution(object):
         :rtype: str
         """
         
+        m, n = len(num1), len(num2)
+        sum = [0] * (m + n)
+        
+        for i in reversed(xrange(m)):
+            for j in reversed(xrange(n)):
+                sum[i + j + 1] += int(num1[i]) * int(num2[j])
+                sum[i + j] += (sum[i + j + 1]) / 10
+                sum[i + j + 1] = (sum[i + j + 1] % 10)
+        
+        i = 0
+        while i < len(sum):
+            if sum[i] != 0:
+                break
+            
+            i += 1
+        
+        sum = sum[i :]
+        res = ''
+        
+        for digit in sum:
+            res += str(digit)
+        
+        return res if res else '0'
+                
+        
+    
+    
+    def sol_dict(self, num1, num2):
         M = {
                 '00':'00','01':'00','02':'00','03':'00','04':'00','05':'00','06':'00','07':'00','08':'00','09':'00',
                 '10':'00','11':'01','12':'02','13':'03','14':'04','15':'05','16':'06','17':'07','18':'08','19':'09',
