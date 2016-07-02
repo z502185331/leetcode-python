@@ -18,7 +18,7 @@ class Solution(object):
         stack = []
         res = []
         
-        while True:
+        while stack or root is not None:
             if root is not None:
                 if root.right is not None:
                     stack.append(root.right)
@@ -27,8 +27,6 @@ class Solution(object):
                 root = root.left;
             
             else:
-                if not stack:
-                    break
                 
                 root = stack.pop()
                 
