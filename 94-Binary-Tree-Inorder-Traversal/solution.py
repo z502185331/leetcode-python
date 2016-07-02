@@ -18,15 +18,12 @@ class Solution(object):
         stack = []
         res = []
         
-        while True:
+        while stack or root is not None:
             if root is not None:
                 stack.append(root)
                 root = root.left
                 
             else:
-                if not stack:
-                    break
-                
                 root = stack.pop()
                 res.append(root.val)
                 root = root.right
