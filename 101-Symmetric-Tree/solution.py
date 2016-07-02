@@ -15,7 +15,8 @@ class Solution(object):
         if root is None:
             return True
         
-        return self.sol_iter(root)
+        # return self.sol_iter(root)
+        return self.sol_rec1(root.left, root.right)
         
     def sol_iter(self, root):
         stack_left = [root]
@@ -72,6 +73,16 @@ class Solution(object):
             if root.val != node.val:
                 return False
             return self.checkSymm(root.right) and self.checkSymm(root.left)
+        else:
+            return False
+    
+    def sol_rec1(self, root1, root2):
+        if root1 is None and root2 is None:
+            return True
+        elif root1 is not None and root2 is not None:
+            return root1.val == root2.val and \
+                self.sol_rec1(root1.left, root2.right) and \
+                    self.sol_rec1(root1.right, root2.left)
         else:
             return False
         
