@@ -26,15 +26,9 @@ Special thanks to [@stellari](https://oj.leetcode.com/discuss/user/stellari) for
 
 <div>
 
-[Subscribe](/subscribe/) to see which companies asked this question
-
-</div>
-
-<div>
-
 <div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
 
-<span class="hidebutton">[Facebook](/company/facebook/) [Google](/company/google/) [Microsoft](/company/microsoft/) [Twitter](/company/twitter/) [Yelp](/company/yelp/)</span></div>
+<span class="hidebutton">[Microsoft](/company/microsoft/) [Google](/company/google/) [Facebook](/company/facebook/) [Twitter](/company/twitter/) [Yelp](/company/yelp/)</span></div>
 
 <div>
 
