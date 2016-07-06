@@ -12,11 +12,11 @@ class Solution(object):
         n = len(grid[0])
         parents = [x for x in xrange(m * n)]
         
-        self.count = 0
+        count = 0
         for i in xrange(m):
             for j in xrange(n):
                 if grid[i][j] == '1':
-                    self.count += 1
+                    count += 1
         
         for i in xrange(m):
             for j in xrange(n):
@@ -25,19 +25,19 @@ class Solution(object):
                 
                 offset = i * n + j
                 # find the four direction
-                if i - 1 >= 0 and grid[i - 1][j] == '1':
-                    self.union(parents, offset, offset - n)
+                if i - 1 >= 0 and grid[i - 1][j] == '1' and self.union(parents, offset, offset - n):
+                    count -= 1
                 
-                if j + 1 < n and grid[i][j + 1] == '1':
-                    self.union(parents, offset, offset + 1)
+                if j + 1 < n and grid[i][j + 1] == '1' and self.union(parents, offset, offset + 1):
+                    count -= 1
                     
-                if i + 1 < m and grid[i + 1][j] == '1':
-                    self.union(parents, offset, offset + n)
+                if i + 1 < m and grid[i + 1][j] == '1' and self.union(parents, offset, offset + n):
+                    count -= 1
                     
-                if j - 1 >= 0 and grid[i][j - 1] == '1':
-                    self.union(parents, offset, offset - 1)
+                if j - 1 >= 0 and grid[i][j - 1] == '1' and self.union(parents, offset, offset - 1):
+                    count -= 1
                     
-        return self.count
+        return count
     
     '''
     A method to union the o1, and o2
@@ -47,10 +47,10 @@ class Solution(object):
         root2 = self.root(parents, o2)
         
         if root1 == root2:  # when two islands are already connected
-            return
+            return False
         
         parents[root1] = root2
-        self.count -= 1
+        return True
     
     
     '''
