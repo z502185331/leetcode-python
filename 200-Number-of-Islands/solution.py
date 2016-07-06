@@ -15,14 +15,10 @@ class Solution(object):
         count = 0
         for i in xrange(m):
             for j in xrange(n):
-                if grid[i][j] == '1':
-                    count += 1
-        
-        for i in xrange(m):
-            for j in xrange(n):
                 if grid[i][j] == '0':
                     continue
                 
+                count += 1
                 offset = i * n + j
                 # find the four direction
                 if i - 1 >= 0 and grid[i - 1][j] == '1' and self.union(parents, offset, offset - n):
