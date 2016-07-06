@@ -13,9 +13,6 @@ class Solution(object):
         :rtype: int
         """
         
-        if root is None:
-            return 0
-        
         return self.binarySearch(root, target, None)
         
         
