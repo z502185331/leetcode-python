@@ -5,17 +5,11 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        self.matrix = [[1,2,3], [4,5,6], [7,8,9]]
-        self.offsets = [(-2, -1), (-2, 1), (-1, 2), (1, 2), (2, 1), (2, -1), (1, -2), (-1, -2), 
-                        (-1, -1), (-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1)]
         
-        count = 0
-        for i in xrange(3):
-            for j in xrange(3):
-                count += self.dfs(m, n, i, j, [self.matrix[i][j]])
+        count = self.dfs(m, n, [], -9)
         return count
     
-    def dfs(self, m, n, x, y, path):
+    def dfs(self, m, n, path, prev):
         count = 0
         if m <= len(path) < n: # the path itself is a valid pattern
             count += 1
@@ -23,18 +17,17 @@ class Solution(object):
         elif len(path) == n:
             return 1
 
-        for offset in self.offsets:
-            new_x = x + offset[0]
-            new_y = y + offset[1]
-            
-            while 0 <= new_x < 3 and 0 <= new_y < 3 and \
-                    self.matrix[new_x][new_y] in path:
-                new_x += offset[0]
-                new_y += offset[1]
-            
-            if 0 <= new_x < 3 and 0 <= new_y < 3:
-                path.append(self.matrix[new_x][new_y])
-                count += self.dfs(m, n, new_x, new_y, path)
-                path.pop()
+        for i in xrange(1, 10):
+            if i not in path:
+                x, y = (i - 1) / 3, (i - 1) % 3
+                px, py = (prev - 1) / 3, (prev - 1) % 3
+                if (5 not in path and (abs(x - px) == 2 and abs(y - py) == 2)) or \
+                        (((y == py and abs(x - px) == 2) or (x == px and abs(y - py) == 2)) and (i + prev) / 2 not in path):
+                    
+                    continue
                 
-        return count  
+                path.append(i)
+                count += self.dfs(m, n, path, i)
+                path.pop()
+        return count
+            
