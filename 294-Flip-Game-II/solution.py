@@ -8,7 +8,10 @@ class Solution(object):
         if not s:
             return False
         
-        return self.dfs(list(s))
+        for i in xrange(len(s) - 1):
+            if s[i] == '+' and s[i + 1] == '+' and not self.canWin(s[: i] + '--' + s[i + 2 :]):
+                return True
+        return False
     
     def dfs(self, l):
         """
