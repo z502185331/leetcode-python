@@ -4,7 +4,51 @@ class Solution(object):
         :type grid: List[List[str]]
         :rtype: int
         """
+    
+        if not grid or not grid[0]:
+            return 0
+    
+        m, n = len(grid), len(grid[0])
+        col_kill = [0] * n
+        row_kill = 0
+        max_enemy = 0
         
+        for i in xrange(m):
+            for j in xrange(n):
+                if grid[i][j] == 'W':
+                    continue
+                
+                if j == 0 or grid[i][j - 1] == 'W':
+                    row_kill = self.process_row(grid, i, j)
+                
+                if i == 0 or grid[i - 1][j] == 'W':
+                    col_kill[j] = self.process_col(grid, i, j)
+                
+                if grid[i][j] == '0':
+                    max_enemy = max(max_enemy, row_kill + col_kill[j])
+        return max_enemy
+        
+    
+    def process_row(self, grid, i, j):
+        count = 0
+        while j < len(grid[0]) and grid[i][j] != 'W':
+            if grid[i][j] == 'E':
+                count += 1
+            j += 1
+        return count
+        
+        
+    def process_col(self, grid, i, j):
+        count = 0
+        while i < len(grid) and grid[i][j] != 'W':
+            if grid[i][j] == 'E':
+                count += 1
+            i += 1
+        return count
+        
+        
+    # TLE
+    def sol_mn(self, grid):
         if not grid or not grid[0]:
             return 0
         
