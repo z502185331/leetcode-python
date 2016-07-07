@@ -9,6 +9,54 @@ class Solution(object):
             return 0
         
         m, n = len(grid), len(grid[0])
+        kills = [[0] * n for _ in xrange(m)]
+        maxEnemies = 0
+        
+        # left to right
+        for i in xrange(m):
+            current = 0
+            for j in xrange(n):
+                current = self.process(grid, kills, i, j, current)
+        
+        # top to bottom
+        for j in xrange(n):
+            current = 0
+            for i in xrange(m):
+                current = self.process(grid, kills, i, j, current)
+                
+        # right to left
+        for i in xrange(m):
+            current = 0
+            for j in reversed(xrange(n)):
+                current = self.process(grid, kills, i, j, current)
+        
+        # bottom to top
+        for j in xrange(n):
+            current = 0
+            for i in reversed(xrange(m)):
+                current = self.process(grid, kills, i, j, current)
+                maxEnemies = max(maxEnemies, kills[i][j])
+        
+        return maxEnemies
+    
+    
+        
+    
+    def process(self, grid, kills, i, j, current):
+        if grid[i][j] == 'W':   # clear all the enemies behind the wall
+            current = 0
+        elif grid[i][j] == 'E':
+            current += 1
+        elif grid[i][j] == '0':
+            kills[i][j] += current
+        return current
+        
+        
+        
+    
+    # TLE
+    def sol_n3(self, grid):
+        m, n = len(grid), len(grid[0])
         kills = [[None] * n for _ in xrange(m)]
         
         maxEnemy = 0
@@ -47,7 +95,7 @@ class Solution(object):
                 kills[i][j] = (horizontalEnemy, verticalEnemy)
         
         return maxEnemy
-                        
+
     
     def countVertiEnemy(self, grid, x, y):
         count = 0
