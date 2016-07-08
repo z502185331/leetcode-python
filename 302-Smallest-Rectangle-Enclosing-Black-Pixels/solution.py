@@ -6,7 +6,43 @@ class Solution(object):
         :type y: int
         :rtype: int
         """
+        
+        return self.sol_binarySearch(image, x, y)
+        
+    def sol_binarySearch(self, image, x, y):
+        if not image or not image[0]:
+            return 0
+
+        m, n = len(image), len(image[0])
+        min_col = self.binarySearch(image, -1, y, 0, m - 1, True, True)
+        max_col = self.binarySearch(image, y, n, 0, m - 1, True, False)
+        min_row = self.binarySearch(image, -1, x, min_col, max_col, False, True)
+        max_row = self.binarySearch(image, x, m, min_col, max_col, False, False)
+
+        return (max_row - min_row + 1) * (max_col - min_col + 1)
+
+    """
+    Find the boundary
+    """
+    def binarySearch(self, image, lower, upper, minimum, maximum, isVerti, goLower):
+        while lower + 1 < upper:
+            mid = lower + (upper - lower) / 2
+            isFound = False
+
+            for i in xrange(minimum, maximum + 1):  # find whether there is black pixel in range
+                if (image[i][mid] if isVerti else image[mid][i]) == '1':
+                    isFound = True
+                    break
+
+            if isFound == goLower:
+                upper = mid
+            else:
+                lower = mid
+
+        return upper if goLower else lower
     
+    
+    def sol_bfs(self, image, x, y):
         if not image or not image[0]:
             return 0
         
@@ -38,26 +74,6 @@ class Solution(object):
             
         
     
-    """
-    Find the coordinates of points between (x, y), (x1, y1) is first black
-    """
-    def findBoundary(self, image, x, y, x1, y1):
-        while x != x1 or y != y1:
-            mid_x = x + (x1 - x) / 2
-            mid_y = y + (y1 - y) / 2
-            
-            if image[mid_x][mid_y] == "1":
-                if x != x1:     # vertical
-                    x = mid_x
-                else:           # horizontal
-                    y = mid_y
-            
-            else:
-                if x != x1:
-                    x1 = mid_x + (1 if x1 < x else -1)
-                else:
-                    y1 = mid_y + (1 if y1 < y else -1)
-        
-        return x, y
+    
                     
         
