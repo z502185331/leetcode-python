@@ -1,5 +1,5 @@
 class Solution(object):
-    def minArea(self, image, r, c):
+    def minArea(self, image, x, y):
         """
         :type image: List[List[str]]
         :type x: int
@@ -7,44 +7,35 @@ class Solution(object):
         :rtype: int
         """
     
-        # if not image or not image[0]:
-        #     return 0
+        if not image or not image[0]:
+            return 0
         
-        # m, n = len(image), len(image[0])
-        # offsets = [(-1, 0), (0, 1), (1, 0), (0, -1)]
-        # queue = [(x, y)]
-        # marks = [[False] * n for _ in xrange(m)]
-        # min_x, max_x, min_y, max_y = m, 0, n, 0
+        m, n = len(image), len(image[0])
+        offsets = [(-1, 0), (0, 1), (1, 0), (0, -1)]
+        queue = [(x, y)]
+        marks = {(x, y)}
+        min_x, max_x, min_y, max_y = m, 0, n, 0
         
-        # while queue:
-        #     size = len(queue)
-        #     for _ in xrange(size):
-        #         cur_x, cur_y = queue.pop(0)
-        #         min_x = min(min_x, cur_x)
-        #         max_x = max(max_x, cur_x)
-        #         min_y = min(min_y, cur_y)
-        #         max_y = max(max_y, cur_y)
-        #         marks[cur_x][cur_y] = True
+        while queue:
+            size = len(queue)
+            for _ in xrange(size):
+                cur_x, cur_y = queue.pop(0)
+                min_x = min(min_x, cur_x)
+                max_x = max(max_x, cur_x)
+                min_y = min(min_y, cur_y)
+                max_y = max(max_y, cur_y)
+                marks |= {(cur_x, cur_y)}
                 
-        #         for offset in offsets:
-        #             next_x = cur_x + offset[0]
-        #             next_y = cur_y + offset[1]
+                for offset in offsets:
+                    next_x = cur_x + offset[0]
+                    next_y = cur_y + offset[1]
                     
-        #             if 0 <= next_x < m and 0 <= next_y < n and \
-        #                     not marks[next_x][next_y] and image[next_x][next_y] == '1':
-        #                 queue.append((next_x, next_y))
+                    if 0 <= next_x < m and 0 <= next_y < n and \
+                            (next_x, next_y) not in marks and image[next_x][next_y] == '1':
+                        queue.append((next_x, next_y))
                         
-        # return (max_x - min_x + 1) * (max_y - min_y + 1)
-        m, n, queue = len(image), len(image[0]), [(r, c)]
-        visited, minr, minc, maxr, maxc = {(r, c)}, m + 1, n + 1, -1, -1
-        for r, c in queue:
-            minr, minc, maxr, maxc = min(minr, r), min(minc, c), max(maxr, r), max(maxc, c)
-            for d in {(-1, 0), (1, 0), (0, 1), (0, -1)}:
-                nr, nc = r + d[0], c + d[1]
-                if 0 <= nr < m and 0 <= nc < n and image[nr][nc] != "0" and (nr, nc) not in visited:
-                    visited |= {(nr, nc)}
-                    queue += (nr, nc),
-        return (maxr - minr + 1) * (maxc - minc + 1) 
+        return (max_x - min_x + 1) * (max_y - min_y + 1)
+
             
         
     
