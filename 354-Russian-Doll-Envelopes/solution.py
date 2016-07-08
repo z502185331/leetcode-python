@@ -8,19 +8,32 @@ class Solution(object):
         if not envelopes:
             return 0
         
-        envelopes.sort()
+        envelopes.sort(key = lambda x : (x[0], -x[1]))
         m = len(envelopes)
         dp = [1] * m
         res = 1
         
-        for i in xrange(1, m):
-            for j in reversed(xrange(i)):
-                if envelopes[i][0] == envelopes[j][0]:  # same width
-                    continue
-                
-                if envelopes[i][1] > envelopes[j][1]:
-                    dp[i] = max(dp[i], dp[j] + 1)
-                    
-            res = max(res, dp[i])
-        return res
+        sequences = []
+        
+        for i, env in enumerate(envelopes):
+            idx = self.findInsertPlace(envelopes, sequences, env)
+            if idx >= len(sequences):
+                sequences.append(i)
+            else:
+                sequences[idx] = i
+        return len(sequences)
+
+
+    def findInsertPlace(self, envelopes, sequences, k):
+        l, r = 0, len(sequences) - 1
+        while l <= r:
+            mid = l + ((r - l) >> 1)
+            if envelopes[sequences[mid]][1] >= k[1]:
+                r = mid - 1
+            else:
+                l = mid + 1
+            
+        return l
+            
+            
             
