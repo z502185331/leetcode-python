@@ -22,7 +22,7 @@ class Solution(object):
             max_x = max(max_x, cur_x)
             min_y = min(min_y, cur_y)
             max_y = max(max_y, cur_y)
-            marks |= {(cur_x, cur_y)}
+            
             
             for offset in offsets:
                 next_x = cur_x + offset[0]
@@ -30,6 +30,7 @@ class Solution(object):
                 
                 if 0 <= next_x < m and 0 <= next_y < n and \
                         (next_x, next_y) not in marks and image[next_x][next_y] == '1':
+                    marks |= {(next_x, next_y)}
                     queue.append((next_x, next_y))
                         
         return (max_x - min_x + 1) * (max_y - min_y + 1)
