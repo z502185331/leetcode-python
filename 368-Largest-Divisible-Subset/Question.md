@@ -21,13 +21,7 @@ Result: [1,2,4,8]
 </pre>
 
 **Credits:**  
-Special thanks to [@Stomach_ache](https://discuss.leetcode.com/user/stomach_ache) for adding this problem and creating all test cases.
-
-<div>
-
-[Subscribe](/subscribe/) to see which companies asked this question
-
-</div>
+Special thanks to [@Stomach_ache](https://leetcode.com/stomach_ache) for adding this problem and creating all test cases.
 
 <div>
 
