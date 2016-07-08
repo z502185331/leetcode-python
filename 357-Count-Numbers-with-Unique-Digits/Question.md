@@ -22,12 +22,6 @@ Special thanks to [@memoryless](https://discuss.leetcode.com/user/memoryless) fo
 
 <div>
 
-[Subscribe](/subscribe/) to see which companies asked this question
-
-</div>
-
-<div>
-
 <div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
 
 <span class="hidebutton">[Google](/company/google/)</span></div>
