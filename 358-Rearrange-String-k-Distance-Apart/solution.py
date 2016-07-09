@@ -23,13 +23,13 @@ class Solution(object):
             heapq.heappush(heap, (-val, key))
         
         # fill the characters in res
-        res = ''
+        res = []
         queue = []
         while heap:
             count, c = heapq.heappop(heap)  # pop the character with most appearances
             count = -count - 1
 
-            res += c
+            res.append(c)
             queue.append((count, c))
             if len(queue) < k:
                 continue
@@ -38,6 +38,6 @@ class Solution(object):
                 if next_count != 0:
                     heapq.heappush(heap, (-next_count, next_c))
         
-        return res if len(res) == m else ''
+        return ''.join(res) if len(res) == m else ''
 
             
