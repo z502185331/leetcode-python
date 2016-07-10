@@ -14,40 +14,9 @@ class Solution(object):
             subarray2 = self.get_max_subarray(nums2, k - i)
             
             # rearrnge two subarray to a nums with length k
-            nums = [0] * k
-            pos1, pos2, pos = 0, 0, 0
-            while pos < k:
-                if self.is_greater(subarray1, pos1, subarray2, pos2):
-                    nums[pos] = subarray1[pos1]
-                    pos1 += 1
-                else:
-                    nums[pos] = subarray2[pos2]
-                    pos2 += 1
-                
-                pos += 1
-            
-            # compare the current nums with global result
-            if self.is_greater(nums, 0, res, 0):
-                res = nums
+            res = max(res, [max(subarray1, subarray2).pop(0) for _ in xrange(k)])
         
         return res
-            
-        
-    
-    def is_greater(self, nums1, idx1, nums2, idx2):
-        """
-        A method to check whether the nums1 from idx1 are greater than nums2 from idx2
-        """
-        while idx1 < len(nums1) and idx2 < len(nums2):
-            if nums1[idx1] > nums2[idx2]:
-                return True
-            elif nums1[idx1] < nums2[idx2]:
-                return False
-            
-            idx1 += 1
-            idx2 += 1
-            
-        return idx1 != len(nums1)
     
     
     def get_max_subarray(self, nums, k):
