@@ -11,7 +11,10 @@ class Solution(object):
         
         if not nums1 or not nums2:
             return []
-        
+            
+        return self.sol_heap(nums1, nums2, k)
+    
+    def sol_sort(self, nums1, nums2, k):
         nums = []
         for num1 in nums1:
             for num2 in nums2:
@@ -28,13 +31,15 @@ class Solution(object):
     def sol_heap(self, nums1, nums2, k):
         heap = []
         
-        for num1 in nums1:
-            for num2 in nums2:
-                heapq.heappush(heap, (num1 + num2, [num1, num2]))
+        for i in xrange(len(nums1)):
+            heapq.heappush(heap, (nums1[i] + nums2[0], i, 0))
         
         res = []
         while heap and k > 0:
-            res.append(heapq.heappop(heap)[1])
+            s, i, j = heapq.heappop(heap)
+            if j < len(nums2) - 1:
+                heapq.heappush(heap, (nums1[i] + nums2[j + 1], i, j + 1))
+            res.append([nums1[i], nums2[j]])
             k -= 1
         
         return res
