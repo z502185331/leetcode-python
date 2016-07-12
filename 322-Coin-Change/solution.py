@@ -29,18 +29,24 @@ class Solution(object):
     # TLE
     def sol_dp(self, coins, amount):
         m = len(coins)
-        dp = [sys.maxint - 1] * (amount + 1)
+        dp = [sys.maxint] * (amount + 1)
         dp[0] = 0
         
-        for i in xrange(1, amount + 1):
-            for j in xrange(m):
-                if i < coins[j]:
-                    continue
+        # for i in xrange(1, amount + 1):
+        #     for j in xrange(m):
+        #         if i < coins[j]:
+        #             continue
             
-                dp[i] = min(dp[i], dp[i - coins[j]] + 1)
+        #         dp[i] = min(dp[i], dp[i - coins[j]] + 1)
             
-        return dp[-1] if dp[-1] != sys.maxint - 1 else -1
-                
+        # return dp[-1] if dp[-1] != sys.maxint - 1 else -1
+        
+        for coin in coins:
+            for i in xrange(coin, amount + 1):
+                if dp[i - coin] != sys.maxint:
+                    dp[i] = min(dp[i], dp[i - coin] + 1)
+        
+        return dp[amount] if dp[amount] != sys.maxint else -1
         
         
     
