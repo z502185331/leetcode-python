@@ -9,6 +9,7 @@ class Solution(object):
         if not s:
             return s
         
+        s = re.sub('\s+', ' ', s).strip() 
         s = self.reverse(s, 0, len(s) - 1)
         l = 0
         
@@ -24,7 +25,7 @@ class Solution(object):
                 
             l += 1
             
-        return re.sub('\s+', ' ', s).strip() 
+        return s
         
         
         
