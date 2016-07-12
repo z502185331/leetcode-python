@@ -5,7 +5,25 @@ class Solution(object):
         :type amount: int
         :rtype: int
         """
+
+        m = len(coins)
+        dp = [sys.maxint - 1] * (amount + 1)
+        dp[0] = 0
         
+        for i in xrange(1, amount + 1):
+            for j in xrange(m):
+                if i < coins[j]:
+                    continue
+            
+                dp[i] = min(dp[i], dp[i - coins[j]] + 1)
+            
+        return dp[-1] if dp[-1] != sys.maxint - 1 else -1
+                
+        
+        
+    
+    # TLE
+    def sol_bfs(self, coins, amount):
         count = 0
         queue = [amount]
         
