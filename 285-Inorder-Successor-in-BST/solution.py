@@ -13,6 +13,16 @@ class Solution(object):
         :rtype: TreeNode
         """
         
+        while root is not None and root.val <= p.val:
+            root = root.right
+        
+        if root is None:
+            return None
+        
+        left_node = self.inorderSuccessor(root.left, p)
+        return left_node if (left_node is not None and left_node.val > p.val) else root
+        
+    def sol_recursion(self, root, p):
         if root is None:
             return None
             
