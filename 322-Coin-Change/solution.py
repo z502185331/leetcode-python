@@ -6,8 +6,10 @@ class Solution(object):
         :rtype: int
         """
 
-        return self.dfs(coins, amount, 0)
+        return self.sol_dp(coins, amount)
     
+    
+    # TLE
     def dfs(self, coins, amount, length):
         if amount == 0:
             return length
