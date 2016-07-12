@@ -20,10 +20,9 @@ class Solution(object):
                 self.reverse(s, l, r - 1)
                 
                 l = r
-                
             l += 1
 
-        
+
     def reverse(self, s, start, end):
         i, j = start, end
         while i < j:
