@@ -6,6 +6,26 @@ class Solution(object):
         :rtype: int
         """
 
+        return self.dfs(coins, amount, 0)
+    
+    def dfs(self, coins, amount, length):
+        if amount == 0:
+            return length
+        
+        res = sys.maxint
+        for coin in coins:
+            if coin > amount:
+                continue
+            
+            local = self.dfs(coins, amount - coin, length + 1)
+            if local != -1:
+                res = min(res, local)
+                
+        return res if res != sys.maxint else -1
+        
+    
+    # TLE
+    def sol_dp(self, coins, amount):
         m = len(coins)
         dp = [sys.maxint - 1] * (amount + 1)
         dp[0] = 0
