@@ -13,7 +13,7 @@ class Solution(object):
             if i + 1 == nums[i]:
                 continue
             
-            while i + 1 != nums[i] and nums[i] > 0 and nums[i] < m:
+            while i + 1 != nums[i] and nums[i] > 0 and nums[i] < m and nums[i] != nums[nums[i] - 1]:
                 tmp = nums[i]
                 nums[i] = nums[tmp - 1]
                 nums[tmp - 1] = tmp
