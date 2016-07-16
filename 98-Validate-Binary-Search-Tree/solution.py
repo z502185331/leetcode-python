@@ -12,7 +12,26 @@ class Solution(object):
         :rtype: bool
         """
     
-        return self.traverse(root)[0]
+        return self.sol_bfs(root)
+    
+    
+    def sol_bfs(self, root):
+        if root is None:
+            return True
+        
+        queue = [(root, -sys.maxint - 1, sys.maxint)]
+        while queue:
+            node, lower, upper = queue.pop(0)
+            if not lower < node.val < upper:
+                return False
+            
+            if node.left is not None:
+                queue.append((node.left, lower, node.val))
+            if node.right is not None:
+                queue.append((node.right, node.val, upper))
+        
+        return True
+    
     
     def traverse(self, root):
         if root is None:
