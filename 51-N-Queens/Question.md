@@ -28,12 +28,6 @@ There exist two distinct solutions to the 4-queens puzzle:
 
 <div>
 
-[Subscribe](/subscribe/) to see which companies asked this question
-
-</div>
-
-<div>
-
 <div id="tags" class="btn btn-xs btn-warning">Show Tags</div>
 
 <span class="hidebutton">[Backtracking](/tag/backtracking/)</span></div>
