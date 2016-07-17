@@ -8,12 +8,7 @@ class Solution(object):
         if n == 0:
             return []
         
-        self.rows = [False] * n
-        self.columns = [False] * n
-        self.ups = [False] * (2 * n - 1)
-        self.downs = [False] * (2 * n - 1)
-        
-        queens = [-1] * n
+        queens = []
         res = []
         self.dfs(queens, 0, res, n)
         return res
@@ -24,30 +19,24 @@ class Solution(object):
             return
         
         for i in xrange(n):
-            if self.isOccupied(index, i, n):
-                continue
             
-            self.setOccupied(index, i, n)
-            queens[index] = i
-            self.dfs(queens, index + 1, res, n)
-            self.removeOccupied(index, i, n)
+            queens.append(i)
+            if self.isValid(queens):
+                self.dfs(queens, index + 1, res, n)
+            
+            queens.pop()
+    
+    
+    
+    def isValid(self, queens):
+        rowId = len(queens) - 1
+        for i in xrange(rowId):
+            
+            diff = abs(queens[rowId] - queens[i])
+            if diff == 0 or diff == rowId - i:
+                return False
         
-    
-    def isOccupied(self, i, j, n):
-        return self.rows[i] or self.columns[j] or \
-            self.ups[i + j] or self.downs[i - j + n - 1]
-            
-    def setOccupied(self, i, j, n):
-        self.rows[i] = True
-        self.columns[j] = True
-        self.ups[i + j] = True 
-        self.downs[i - j + n - 1] = True
-    
-    def removeOccupied(self, i, j, n):
-        self.rows[i] = False
-        self.columns[j] = False
-        self.ups[i + j] = False
-        self.downs[i - j + n - 1] = False
+        return True
         
         
     def format(self, queens, n):
