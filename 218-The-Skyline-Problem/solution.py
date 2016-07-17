@@ -1,9 +1,38 @@
+import heapq
 class Solution(object):
     def getSkyline(self, buildings):
         """
         :type buildings: List[List[int]]
         :rtype: List[List[int]]
         """
+        
+        endpoints = []
+        for l, r, _ in buildings:
+            endpoints.append(l)
+            endpoints.append(r)
+        endpoints.sort()
+        
+        res = []
+        heap = []   # max heap
+        i = 0
+        
+        for x in endpoints:
+            while heap and heap[0][1] <= x: # pop all the previous line
+                heapq.heappop(heap)
+                
+            while i < len(buildings) and buildings[i][0] == x:  # push all lines starting from x
+                heapq.heappush(heap, (-buildings[i][2], buildings[i][1]))     # push the right height and endpoint to heap
+                i += 1
+            
+            height = 0 if not heap else -heap[0][0]
+            
+            if not res or res[-1][1] != height:
+                res.append([x, height])
+        
+        return res
+            
+        
+    def sol_mergeSort(self, buildings):
         m = len(buildings)
         
         if not buildings:
