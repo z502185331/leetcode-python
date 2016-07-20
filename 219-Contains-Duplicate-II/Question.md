@@ -6,15 +6,9 @@ Given an array of integers and an integer _k_, find out whether there are two di
 
 <div>
 
-[Subscribe](/subscribe/) to see which companies asked this question
-
-</div>
-
-<div>
-
 <div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
 
-<span class="hidebutton">[Airbnb](/company/airbnb/) [Palantir](/company/palantir/)</span></div>
+<span class="hidebutton">[Palantir](/company/palantir/) [Airbnb](/company/airbnb/)</span></div>
 
 <div>
 
