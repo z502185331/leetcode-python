@@ -16,15 +16,9 @@ This is because the new interval `[4,9]` overlaps with `[3,5],[6,7],[8,10]`.
 
 <div>
 
-[Subscribe](/subscribe/) to see which companies asked this question
-
-</div>
-
-<div>
-
 <div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
 
-<span class="hidebutton">[Facebook](/company/facebook/) [Google](/company/google/) [LinkedIn](/company/linkedin/)</span></div>
+<span class="hidebutton">[LinkedIn](/company/linkedin/) [Google](/company/google/) [Facebook](/company/facebook/)</span></div>
 
 <div>
 
