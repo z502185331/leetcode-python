@@ -17,12 +17,6 @@ For example, given _n_ = 3, a solution set is:
 
 <div>
 
-[Subscribe](/subscribe/) to see which companies asked this question
-
-</div>
-
-<div>
-
 <div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
 
 <span class="hidebutton">[Google](/company/google/) [Uber](/company/uber/) [Zenefits](/company/zenefits/)</span></div>
