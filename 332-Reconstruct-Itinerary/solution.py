@@ -26,12 +26,11 @@ class Solution(object):
                 return False
             
             for i in xrange(len(d[start])):
-                dest = d[start][i]
-                d[start].remove(dest)
+                dest = d[start].pop(0)
                 if dfs(depth + 1, dest, path):
                     return True
                 path.pop()
-                d[start].insert(i, dest)
+                d[start].append(dest)
             return False
         
         path = []
