@@ -13,15 +13,9 @@ The above elevation map is represented by array [0,1,0,2,1,0,1,3,2,1,2,1]. In th
 
 <div>
 
-[Subscribe](/subscribe/) to see which companies asked this question
-
-</div>
-
-<div>
-
 <div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
 
-<span class="hidebutton">[Amazon](/company/amazon/) [Apple](/company/apple/) [Bloomberg](/company/bloomberg/) [Google](/company/google/) [Twitter](/company/twitter/) [Zenefits](/company/zenefits/)</span></div>
+<span class="hidebutton">[Google](/company/google/) [Twitter](/company/twitter/) [Zenefits](/company/zenefits/) [Amazon](/company/amazon/) [Apple](/company/apple/) [Bloomberg](/company/bloomberg/)</span></div>
 
 <div>
 
