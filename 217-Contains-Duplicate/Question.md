@@ -6,15 +6,9 @@ Given an array of integers, find if the array contains any duplicates. Your func
 
 <div>
 
-[Subscribe](/subscribe/) to see which companies asked this question
-
-</div>
-
-<div>
-
 <div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
 
-<span class="hidebutton">[Airbnb](/company/airbnb/) [Palantir](/company/palantir/) [Yahoo](/company/yahoo/)</span></div>
+<span class="hidebutton">[Palantir](/company/palantir/) [Airbnb](/company/airbnb/) [Yahoo](/company/yahoo/)</span></div>
 
 <div>
 
