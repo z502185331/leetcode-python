@@ -35,12 +35,6 @@ The input prerequisites is a graph represented by **a list of edges**, not adjac
 
 <div>
 
-[Subscribe](/subscribe/) to see which companies asked this question
-
-</div>
-
-<div>
-
 <div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
 
 <span class="hidebutton">[Facebook](/company/facebook/) [Zenefits](/company/zenefits/)</span></div>
