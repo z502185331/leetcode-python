@@ -18,9 +18,15 @@ By calling _next_ repeatedly until _hasNext_ returns false, the order of element
 
 <div>
 
+[Subscribe](/subscribe/) to see which companies asked this question
+
+</div>
+
+<div>
+
 <div id="company_tags" class="btn btn-xs btn-warning">Show Company Tags</div>
 
-<span class="hidebutton">[Google](/company/google/) [Facebook](/company/facebook/) [Twitter](/company/twitter/)</span></div>
+<span class="hidebutton">[Facebook](/company/facebook/) [Google](/company/google/) [Twitter](/company/twitter/)</span></div>
 
 <div>
 
